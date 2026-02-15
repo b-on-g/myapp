@@ -1,8 +1,8 @@
-$company_template_button_demo $mol_example_small
+$mynamespace_myapp_button_demo $mol_example_small
 	title \Company Button
 	sub /
-		<= Login $company_template_button title \Войти
-		<= Logout $company_template_button title \Выйти
+		<= Login $mynamespace_myapp_button title \Войти
+		<= Logout $mynamespace_myapp_button title \Выйти
 	tags /
 		\logo
 		\icon
