@@ -2950,6 +2950,17 @@ declare namespace $ {
 
 //# sourceMappingURL=button.view.tree.d.ts.map
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_row extends $mol_view {
+	}
+	
+}
+
+//# sourceMappingURL=row.view.tree.d.ts.map
+declare namespace $ {
 
 	type $mol_link_source__uri_mynamespace_myapp_app_1 = $mol_type_enforce<
 		string
@@ -2981,12 +2992,52 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_page__title_mynamespace_myapp_app_7 = $mol_type_enforce<
+	type $mol_string__hint_mynamespace_myapp_app_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_mynamespace_myapp_app_8 = $mol_type_enforce<
+		ReturnType< $mynamespace_myapp_app['name'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_view__sub_mynamespace_myapp_app_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_button_major__title_mynamespace_myapp_app_10 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_mynamespace_myapp_app_11 = $mol_type_enforce<
+		ReturnType< $mynamespace_myapp_app['increment'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_button_minor__title_mynamespace_myapp_app_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_mynamespace_myapp_app_13 = $mol_type_enforce<
+		ReturnType< $mynamespace_myapp_app['reset'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_row__sub_mynamespace_myapp_app_14 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_row['sub'] >
+	>
+	type $mol_page__title_mynamespace_myapp_app_15 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__body_mynamespace_myapp_app_8 = $mol_type_enforce<
+	type $mol_page__body_mynamespace_myapp_app_16 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body'] >
@@ -2999,7 +3050,17 @@ declare namespace $ {
 		Logout_button( ): $mynamespace_myapp_button
 		Docs_uri( ): $mol_link
 		Docs( ): $mol_page
-		Div( ): $mol_view
+		greeting( ): string
+		Greeting( ): $mol_view
+		name( next?: string ): string
+		Name_input( ): $mol_string
+		count_text( ): string
+		Count_label( ): $mol_view
+		increment( next?: any ): any
+		Increment( ): $mol_button_major
+		reset( next?: any ): any
+		Reset( ): $mol_button_minor
+		Counter_row( ): $mol_row
 		Page1( ): $mol_page
 		menu_title( ): string
 		Menu_logo( ): ReturnType< $mynamespace_myapp_app['Logo2'] >
@@ -3016,6 +3077,16 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=app.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mynamespace_myapp_app extends $.$mynamespace_myapp_app {
+        greeting(): string;
+        count(next?: number): number;
+        count_text(): string;
+        increment(next?: any): void;
+        reset(next?: any): void;
+    }
+}
+
 declare namespace $ {
 }
 

@@ -203,7 +203,8 @@
     "$mol_icon_brightness_4",
     "$mol_icon_brightness",
     "$mynamespace_myapp_button",
-    "$mol_button_major"
+    "$mol_button_major",
+    "$mol_row"
   ],
   "dependencies": {
     "autoinstall": "*",

@@ -8219,6 +8219,20 @@ var $;
 "use strict";
 
 ;
+	($.$mol_row) = class $mol_row extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/row/row.view.css", "[mol_row] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\talign-items: flex-start;\n\talign-content: flex-start;\n\tjustify-content: flex-start;\n\tpadding: var(--mol_gap_block);\n\tgap: var(--mol_gap_block);\n\tflex: 0 0 auto;\n\tbox-sizing: border-box;\n\tmax-width: 100%;\n}\n\n[mol_row] > * {\n\tmax-width: 100%;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
 	($.$mynamespace_myapp_app) = class $mynamespace_myapp_app extends ($.$mol_book2_catalog) {
 		Logo2(){
 			const obj = new this.$.$mynamespace_myapp_logo();
@@ -8253,15 +8267,69 @@ var $;
 			(obj.body) = () => ([(this.Docs_uri())]);
 			return obj;
 		}
-		Div(){
+		greeting(){
+			return "Введите имя ниже";
+		}
+		Greeting(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => (["sdfsdf"]);
+			(obj.sub) = () => ([(this.greeting())]);
+			return obj;
+		}
+		name(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Name_input(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ("Ваше имя");
+			(obj.value) = (next) => ((this.name(next)));
+			return obj;
+		}
+		count_text(){
+			return "Кликов: 0";
+		}
+		Count_label(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.count_text())]);
+			return obj;
+		}
+		increment(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Increment(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ("+1");
+			(obj.click) = (next) => ((this.increment(next)));
+			return obj;
+		}
+		reset(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Reset(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ("Сброс");
+			(obj.click) = (next) => ((this.reset(next)));
+			return obj;
+		}
+		Counter_row(){
+			const obj = new this.$.$mol_row();
+			(obj.sub) = () => ([
+				(this.Count_label()), 
+				(this.Increment()), 
+				(this.Reset())
+			]);
 			return obj;
 		}
 		Page1(){
 			const obj = new this.$.$mol_page();
 			(obj.title) = () => ("Привет $mol!");
-			(obj.body) = () => ([(this.Div())]);
+			(obj.body) = () => ([
+				(this.Greeting()), 
+				(this.Name_input()), 
+				(this.Counter_row())
+			]);
 			return obj;
 		}
 		menu_title(){
@@ -8296,7 +8364,15 @@ var $;
 	($mol_mem(($.$mynamespace_myapp_app.prototype), "Logout_button"));
 	($mol_mem(($.$mynamespace_myapp_app.prototype), "Docs_uri"));
 	($mol_mem(($.$mynamespace_myapp_app.prototype), "Docs"));
-	($mol_mem(($.$mynamespace_myapp_app.prototype), "Div"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "Greeting"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "name"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "Name_input"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "Count_label"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "increment"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "Increment"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "reset"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "Reset"));
+	($mol_mem(($.$mynamespace_myapp_app.prototype), "Counter_row"));
 	($mol_mem(($.$mynamespace_myapp_app.prototype), "Page1"));
 
 
@@ -8307,9 +8383,49 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    var $$;
+    (function ($$) {
+        class $mynamespace_myapp_app extends $.$mynamespace_myapp_app {
+            greeting() {
+                const name = this.name();
+                return name ? `Привет, ${name}!` : 'Введите имя ниже';
+            }
+            count(next) {
+                return next ?? 0;
+            }
+            count_text() {
+                return `Кликов: ${this.count()}`;
+            }
+            increment(next) {
+                this.count(this.count() + 1);
+            }
+            reset(next) {
+                this.count(0);
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mynamespace_myapp_app.prototype, "greeting", null);
+        __decorate([
+            $mol_mem
+        ], $mynamespace_myapp_app.prototype, "count", null);
+        __decorate([
+            $mol_mem
+        ], $mynamespace_myapp_app.prototype, "count_text", null);
+        $$.$mynamespace_myapp_app = $mynamespace_myapp_app;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
     $mol_style_define($mynamespace_myapp_app, {
-        Div: {
-            color: 'red',
+        Greeting: {
+            font: {
+                size: '1.5rem',
+            },
+            padding: $mol_gap.block,
         },
     });
 })($ || ($ = {}));

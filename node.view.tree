@@ -401,6 +401,8 @@ $mol_button_major $mol_button_minor
 
 $mynamespace_myapp_button $mol_button_major
 
+$mol_row $mol_view
+
 $mynamespace_myapp_app $mol_book2_catalog
 	menu_title \Моя компания
 	Menu_logo <= Logo2 $mynamespace_myapp_logo
@@ -424,9 +426,20 @@ $mynamespace_myapp_app $mol_book2_catalog
 		hello <= Page1 $mol_page
 			title \Привет $mol!
 			body /
-				- <= Hello $mol_text text \
-					\# Привет https://mol.hyoo.ru/#!section=docs/=6leyma_5ks814]
-					\Инструкция по шаблону читай на https://github.com/Lyumih/richtemplate
-				<= Div $mol_view
+				<= Greeting $mol_view
 					sub /
-						\sdfsdf
+						<= greeting \Введите имя ниже
+				<= Name_input $mol_string
+					hint \Ваше имя
+					value? <=> name? \
+				<= Counter_row $mol_row
+					sub /
+						<= Count_label $mol_view
+							sub /
+								<= count_text \Кликов: 0
+						<= Increment $mol_button_major
+							title \+1
+							click? <=> increment? null
+						<= Reset $mol_button_minor
+							title \Сброс
+							click? <=> reset? null
