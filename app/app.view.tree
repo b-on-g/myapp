@@ -1,5 +1,5 @@
 $mynamespace_myapp_app $mol_book2_catalog
-	menu_title \Моя компания
+	menu_title @ \My Company
 	Menu_logo <= Logo2 $mynamespace_myapp_logo
 	param \page
 	plugins /
@@ -10,31 +10,53 @@ $mynamespace_myapp_app $mol_book2_catalog
 		<= Lighter $mol_lights_toggle
 	menu_foot /
 		<= Logout_button $mynamespace_myapp_button
-			title \Выйти
+			title @ \Logout
 	Spread_default 
 		<= Docs $mol_page 
 			body / 
 				<= Docs_uri $mol_link 
-					title \Демонстрации
+					title @ \Demos
 					uri \http://localhost:9080/mynamespace/myapp/docs/-/test.html
 	spreads *
 		hello <= Page1 $mol_page
-			title \Привет $mol!
+			title @ \Hello $mol!
 			body /
 				<= Greeting $mol_view
 					sub /
-						<= greeting \Введите имя ниже
+						<= greeting @ \Enter your name below
 				<= Name_input $mol_string
-					hint \Ваше имя
+					hint @ \Your name
 					value? <=> name? \
 				<= Counter_row $mol_row
 					sub /
 						<= Count_label $mol_view
 							sub /
-								<= count_text \Кликов: 0
+								<= count_text @ \Clicks: 0
 						<= Increment $mol_button_major
 							title \+1
 							click? <=> increment? null
 						<= Reset $mol_button_minor
-							title \Сброс
+							title @ \Reset
 							click? <=> reset? null
+		profile <= Page2 $mol_page
+			title \Giper Baza
+			body /
+				<= Profile_id_row $mol_row
+					sub /
+						<= Profile_id_label $mol_view
+							sub /
+								<= profile_id_label @ \Profile ID:
+						<= Profile_id $mol_view
+							sub /
+								<= profile_id \
+				<= Profile_name $mol_string
+					hint @ \Name
+					value? <=> profile_name? \
+				<= Profile_email $mol_string
+					hint @ \Email
+					value? <=> profile_email? \
+				<= Profile_status $mol_view
+					sub /
+						<= profile_status @ \Data is auto-saved to Giper Baza
+				<= Profile_hint $mol_text
+					text @ \Open a second tab — data syncs in real-time. Reload — data persists.
