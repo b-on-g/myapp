@@ -1,0 +1,10 @@
+{
+	"name": "mynamespace_myapp_app",
+	"short_name": "mynamespace_myapp_app",
+	"description": "",
+	"id": "mynamespace_myapp_app",
+	"start_url": ".",
+	"display": "standalone",
+	"background_color": "#000000",
+	"theme_color": "#000000"
+}
