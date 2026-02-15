@@ -3,5 +3,20 @@
 	"$mol_lights_toggle_hint": "Переключить освещение",
 	"$mol_link_source_hint": "Исходные коды",
 	"$mol_search_Clear_hint": "Очистить",
-	"$mol_search_hint": "Поиск.."
+	"$mol_search_hint": "Поиск..",
+	"$mol_text_code_Copy_hint": "Скопировать весь код",
+	"$mol_text_header_Link_hint": "Ссылка на эту секцию",
+	"$mynamespace_myapp_app_Docs_uri_title": "Демонстрации",
+	"$mynamespace_myapp_app_Logout_button_title": "Выйти",
+	"$mynamespace_myapp_app_Name_input_hint": "Ваше имя",
+	"$mynamespace_myapp_app_Page1_title": "Привет $mol!",
+	"$mynamespace_myapp_app_Profile_email_hint": "Email",
+	"$mynamespace_myapp_app_Profile_hint_text": "Откройте вторую вкладку — данные синхронизируются в реалтайме. Перезагрузите — данные сохранены.",
+	"$mynamespace_myapp_app_Profile_name_hint": "Имя",
+	"$mynamespace_myapp_app_Reset_title": "Сброс",
+	"$mynamespace_myapp_app_count_text": "Кликов: 0",
+	"$mynamespace_myapp_app_greeting": "Введите имя ниже",
+	"$mynamespace_myapp_app_menu_title": "Моя компания",
+	"$mynamespace_myapp_app_profile_id_label": "ID профиля:",
+	"$mynamespace_myapp_app_profile_status": "Данные сохраняются автоматически в Giper Baza"
 }

@@ -3,5 +3,20 @@
 	"$mol_lights_toggle_hint": "Toggle lights",
 	"$mol_link_source_hint": "Source code",
 	"$mol_search_Clear_hint": "Clear",
-	"$mol_search_hint": "Search..."
+	"$mol_search_hint": "Search...",
+	"$mol_text_code_Copy_hint": "Copy whole code",
+	"$mol_text_header_Link_hint": "Permalink to this section",
+	"$mynamespace_myapp_app_Docs_uri_title": "Demos",
+	"$mynamespace_myapp_app_Logout_button_title": "Logout",
+	"$mynamespace_myapp_app_Name_input_hint": "Your name",
+	"$mynamespace_myapp_app_Page1_title": "Hello $mol!",
+	"$mynamespace_myapp_app_Profile_email_hint": "Email",
+	"$mynamespace_myapp_app_Profile_hint_text": "Open a second tab — data syncs in real-time. Reload — data persists.",
+	"$mynamespace_myapp_app_Profile_name_hint": "Name",
+	"$mynamespace_myapp_app_Reset_title": "Reset",
+	"$mynamespace_myapp_app_count_text": "Clicks: 0",
+	"$mynamespace_myapp_app_greeting": "Enter your name below",
+	"$mynamespace_myapp_app_menu_title": "My Company",
+	"$mynamespace_myapp_app_profile_id_label": "Profile ID:",
+	"$mynamespace_myapp_app_profile_status": "Data is auto-saved to Giper Baza"
 }
