@@ -5329,10 +5329,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    function $giper_baza_log(this: $): boolean;
-}
-
-declare namespace $ {
     class $mol_bus<Data> extends $mol_object {
         readonly name: string;
         readonly handle: (data: Data) => void;
@@ -5341,6 +5337,10 @@ declare namespace $ {
         destructor(): void;
         send(data: Data): void;
     }
+}
+
+declare namespace $ {
+    function $giper_baza_log(this: $): boolean;
 }
 
 declare namespace $ {
@@ -5362,6 +5362,7 @@ declare namespace $ {
         gift_add(gift: $giper_baza_unit_gift): void;
         sand_add(sand: $giper_baza_unit_sand): void;
         units_reaping: Set<$giper_baza_unit_base>;
+        unit_reap(unit: $giper_baza_unit_base): void;
         unit_seal_inc(unit: $giper_baza_unit): void;
         unit_seal_dec(unit: $giper_baza_unit): void;
         seal_del(seal: $giper_baza_unit_seal): void;
@@ -6400,12 +6401,12 @@ declare namespace $ {
         offsets_del: WeakMap<ArrayBuffer, number>;
         offsets_ins: WeakMap<ArrayBuffer, number>;
         save(...data: [ArrayBufferView<ArrayBuffer>, ...ArrayBufferView<ArrayBuffer>[]]): number;
-        free(data: ArrayBufferView<ArrayBuffer>, size?: number): void;
+        free(data: ArrayBufferView<ArrayBuffer>, size?: number): undefined;
     }
     class $giper_baza_mine_fs_yym extends $mol_object2 {
         readonly sides: [$mol_file, $mol_file];
-        pool(): $mol_memory_pool;
-        offsets(): Map<ArrayBuffer, number>;
+        pool(reset?: null): $mol_memory_pool;
+        offsets(reset?: null): Map<ArrayBuffer, number>;
         constructor(sides: [$mol_file, $mol_file]);
         destructor(): void;
         load_init(): void;
