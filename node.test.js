@@ -15588,9 +15588,8 @@ var $;
             this.name = name;
             this.handle = handle;
             try {
-                const channel = new BroadcastChannel(name);
-                channel.onmessage = (event) => this.handle(event.data);
-                this.channel = channel;
+                this.channel = new BroadcastChannel(name);
+                this.channel.onmessage = (event) => this.handle(event.data);
             }
             catch (error) {
                 console.warn(error);
@@ -18065,15 +18064,7 @@ var $;
                         offset += gift.byteLength;
                         continue;
                     }
-                    default:
-                        $$.$mol_log3_warn({
-                            place: '$giper_baza_pack..parts',
-                            message: 'Unknown Kind',
-                            kind,
-                            offset,
-                            hint: 'Try to update application',
-                        });
-                        return [...parts];
+                    default: return $mol_fail(new Error('Unknown Kind', { cause: { kind, offset } }));
                 }
             }
             return [...parts];
@@ -18179,7 +18170,7 @@ var $;
             const link = this.master_current();
             if (!link)
                 return null;
-            const socket = new $mol_dom_context.WebSocket(link.replace(/^http/, 'ws'));
+            const socket = new $mol_dom_context.WebSocket(link.replace(/^http/, 'ws'), ['$giper_baza_yard']);
             socket.binaryType = 'arraybuffer';
             const port = $mol_rest_port_ws_std.make({ socket });
             socket.onmessage = async (event) => {
@@ -19340,6 +19331,12 @@ var $;
         origin() {
             return 'unknown';
         }
+        address() {
+            return 'unknown';
+        }
+        protocols() {
+            return [];
+        }
         data() {
             return null;
         }
@@ -19375,7 +19372,9 @@ var $;
                 port: this.port,
                 method: () => this.method(),
                 uri: $mol_const(uri),
+                protocols: () => this.protocols(),
                 type: () => this.type(),
+                origin: () => this.origin(),
                 data: () => this.data(),
             });
         }
@@ -19384,6 +19383,8 @@ var $;
                 port: this.port,
                 method: $mol_const(method),
                 uri: () => this.uri(),
+                protocols: () => this.protocols(),
+                type: () => this.type(),
                 origin: () => this.origin(),
                 data: $mol_const(data),
             });
@@ -19430,7 +19431,15 @@ var $;
             }
             return $mol_wire_sync(this)[msg.method()](msg);
         }
-        OPEN(msg) { }
+        _protocols = [];
+        OPEN(msg) {
+            const protocols = msg.protocols();
+            for (const protocol of protocols) {
+                if (this._protocols.includes(protocol))
+                    return protocol;
+            }
+            return '';
+        }
         CLOSE(msg) { }
         HEAD(msg) { }
         GET(msg) { }
@@ -19619,6 +19628,12 @@ var $;
         origin() {
             return this.input.headers['origin'] ?? super.origin();
         }
+        address() {
+            return String(this.input.headers['x-forwarded-for'] ?? '') || this.input.socket?.remoteAddress || super.address();
+        }
+        protocols() {
+            return String(this.input.headers['sec-websocket-protocol'] ?? '').split(',').map(p => p.trim()).filter(Boolean);
+        }
         data() {
             const consume = $mol_wire_sync($node['stream/consumers']);
             if (this.type().startsWith('text/')) {
@@ -19658,6 +19673,12 @@ var $;
     __decorate([
         $mol_mem
     ], $mol_rest_message_http.prototype, "origin", null);
+    __decorate([
+        $mol_mem
+    ], $mol_rest_message_http.prototype, "address", null);
+    __decorate([
+        $mol_mem
+    ], $mol_rest_message_http.prototype, "protocols", null);
     __decorate([
         $mol_mem
     ], $mol_rest_message_http.prototype, "data", null);
@@ -19722,6 +19743,8 @@ var $;
                     place: this,
                     message: error.message ?? '',
                     origin: msg.origin(),
+                    address: msg.address(),
+                    casue: error.cause,
                     stack: error.stack,
                 });
                 $mol_wire_sync(res).writeHead(500, error.name || 'Server Error');
@@ -19731,8 +19754,16 @@ var $;
         ws_upgrade(req, socket, head) {
             const port = $mol_rest_port_ws_node.make({ socket });
             const upgrade = $mol_rest_message_http.make({ port, input: req });
+            let protocol = '';
             try {
-                $mol_wire_sync(this.root()).REQUEST(upgrade.derive('OPEN', null));
+                protocol = $mol_wire_sync(this.root()).REQUEST(upgrade.derive('OPEN', null));
+                if (!protocol) {
+                    socket.write('HTTP/1.1 400 Bad Request\r\n' +
+                        '\r\n' +
+                        `Unsupported Protocols: ${upgrade.protocols()}`);
+                    socket.end();
+                    return;
+                }
             }
             catch (error) {
                 if ($mol_promise_like(error))
@@ -19741,6 +19772,8 @@ var $;
                     place: this,
                     message: error.message ?? '',
                     origin: upgrade.origin(),
+                    address: upgrade.address(),
+                    casue: error.cause,
                     stack: error.stack,
                 });
                 socket.end();
@@ -19765,6 +19798,8 @@ var $;
                         place: this,
                         message: error.message ?? '',
                         origin: upgrade.origin(),
+                        address: upgrade.address(),
+                        casue: error.cause,
                         stack: error.stack,
                     });
                     return;
@@ -19780,6 +19815,7 @@ var $;
                 'Upgrade: WebSocket\r\n' +
                 'Connection: Upgrade\r\n' +
                 `Sec-WebSocket-Accept: ${key_out}\r\n` +
+                `Sec-WebSocket-Protocol: ${protocol}\r\n` +
                 '\r\n');
             if (this.log())
                 $mol_wire_sync(this.$).$mol_log3_come({
@@ -19877,6 +19913,8 @@ var $;
                     place: this,
                     message: error.message ?? '',
                     origin: upgrade.origin(),
+                    address: upgrade.address(),
+                    casue: error.cause,
                     stack: error.stack,
                 });
                 sock.end();
@@ -20021,14 +20059,20 @@ var $;
         link() {
             return new $giper_baza_app_node_link;
         }
+        _protocols = ['$giper_baza_yard'];
         OPEN(msg) {
+            const protocol = super.OPEN(msg);
+            if (!protocol)
+                return '';
             this.$.$giper_baza_glob.yard().slaves.add(msg.port);
+            return protocol;
         }
         POST(msg) {
             this.$.$giper_baza_glob.yard().port_income(msg.port, msg.bin());
         }
         CLOSE(msg) {
             this.$.$giper_baza_glob.yard().slaves.delete(msg.port);
+            super.CLOSE(msg);
         }
         _auto() {
             this._stat_update();

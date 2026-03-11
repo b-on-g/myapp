@@ -8428,6 +8428,8 @@ declare namespace $ {
         uri(): URL;
         type(): $mol_rest_port_mime;
         origin(): string;
+        address(): string;
+        protocols(): readonly string[];
         data(): null | string | Uint8Array<ArrayBuffer> | Element | object;
         bin(): Uint8Array<ArrayBuffer>;
         text(): string;
@@ -8444,7 +8446,8 @@ declare namespace $ {
 declare namespace $ {
     class $mol_rest_resource extends $mol_object {
         REQUEST(msg: $mol_rest_message): any;
-        OPEN(msg: $mol_rest_message): void;
+        _protocols: readonly string[];
+        OPEN(msg: $mol_rest_message): string;
         CLOSE(msg: $mol_rest_message): void;
         HEAD(msg: $mol_rest_message): void;
         GET(msg: $mol_rest_message): void;
@@ -8478,6 +8481,8 @@ declare namespace $ {
         uri(): URL;
         type(): $mol_rest_port_mime;
         origin(): string;
+        address(): string;
+        protocols(): string[];
         data(): null | string | Uint8Array<ArrayBuffer> | Element | object;
         route(uri: URL): $mol_rest_message_http;
     }
@@ -8521,7 +8526,8 @@ declare namespace $ {
 declare namespace $ {
     class $giper_baza_app_node extends $mol_rest_resource_fs {
         link(): $giper_baza_app_node_link;
-        OPEN(msg: $mol_rest_message): void;
+        _protocols: string[];
+        OPEN(msg: $mol_rest_message): string;
         POST(msg: $mol_rest_message): void;
         CLOSE(msg: $mol_rest_message): void;
         _auto(): void;
