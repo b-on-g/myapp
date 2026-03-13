@@ -3141,7 +3141,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/view/view/view.css", "@view-transition {\n\tnavigation: auto;\n}\n\n[mol_view] {\n\ttransition-property: height, width, min-height, min-width, max-width, max-height, transform, scale, translate, rotate;\n\ttransition-duration: .2s;\n\ttransition-timing-function: ease-out;\n\t-webkit-appearance: none;\n\tbox-sizing: border-box;\n\tdisplay: flex;\n\tflex-shrink: 0;\n\tcontain: style;\n\tscrollbar-color: var(--mol_theme_line) transparent;\n\tscrollbar-width: thin;\n}\t\n\n[mol_view]::selection {\n\tbackground: var(--mol_theme_line);\n}\t\n\n[mol_view]::-webkit-scrollbar {\n\twidth: .25rem;\n\theight: .25rem;\n}\n\n[mol_view]::-webkit-scrollbar-corner {\n\tbackground-color: var(--mol_theme_line);\n}\n\n[mol_view]::-webkit-scrollbar-track {\n\tbackground-color: transparent;\n}\n\n[mol_view]::-webkit-scrollbar-thumb {\n\tbackground-color: var(--mol_theme_line);\n\tborder-radius: var(--mol_gap_round);\n}\n\n[mol_view] > * {\n\tword-break: inherit;\n}\n\n[mol_view_root] {\n\tmargin: 0;\n\tpadding: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tfont-family: system-ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n\tfont-size: 1rem;\n\tline-height: 1.5rem;\n\t/* background: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text); */\n\tcontain: unset; /** Fixes bg ignoring when applied to body on Chrome */\n\ttab-size: 4;\n\toverscroll-behavior: contain; /** Disable navigation gestures **/\n}\n\n@media print {\n\t[mol_view_root] {\n\t\theight: auto;\n\t}\n}\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: repeating-linear-gradient(\n\t\t-45deg,\n\t\t#f92323,\n\t\t#f92323 .5rem,\n\t\t#ff3d3d .5rem,\n\t\t#ff3d3d 1.5rem\n\t);\n\tcolor: black;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n@keyframes mol_view_wait {\n\tfrom {\n\t\topacity: .25;\n\t}\n\t20% {\n\t\topacity: .75;\n\t}\n\tto {\n\t\topacity: .25;\n\t}\n}\n\n:where([mol_view][mol_view_error=\"$mol_promise_blocker\"]),\n:where([mol_view][mol_view_error=\"Promise\"]) {\n\tbackground: var(--mol_theme_hover);\n}\n\n[mol_view][mol_view_error=\"Promise\"] {\n\tanimation: mol_view_wait 1s steps(20,end) infinite;\n}\n");
+    $mol_style_attach("mol/view/view/view.css", "@view-transition {\n\tnavigation: auto;\n}\n\n[mol_view] {\n\ttransition-property: height, width, min-height, min-width, max-width, max-height, transform, scale, translate, rotate;\n\ttransition-duration: .2s;\n\ttransition-timing-function: ease-out;\n\t-webkit-appearance: none;\n\tbox-sizing: border-box;\n\tdisplay: flex;\n\tflex-shrink: 0;\n\tcontain: style;\n\tscrollbar-color: var(--mol_theme_line) transparent;\n\tscrollbar-width: thin;\n}\t\n\n[mol_view]::selection {\n\tbackground: var(--mol_theme_line);\n}\t\n\n[mol_view]::-webkit-scrollbar {\n\twidth: .25rem;\n\theight: .25rem;\n}\n\n[mol_view]::-webkit-scrollbar-corner {\n\tbackground-color: var(--mol_theme_line);\n}\n\n[mol_view]::-webkit-scrollbar-track {\n\tbackground-color: transparent;\n}\n\n[mol_view]::-webkit-scrollbar-thumb {\n\tbackground-color: var(--mol_theme_line);\n\tborder-radius: var(--mol_gap_round);\n}\n\n[mol_view] > * {\n\tword-break: inherit;\n}\n\n[mol_view_root] {\n\tmargin: 0;\n\tpadding: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbox-sizing: border-box;\n\tfont-family: system-ui, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n\tfont-size: 1rem;\n\tline-height: 1.5rem;\n\t/* background: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text); */\n\tcontain: unset; /** Fixes bg ignoring when applied to body on Chrome */\n\ttab-size: 4;\n\t/*overscroll-behavior: contain; /** Disable navigation gestures **/\n}\n\n@media print {\n\t[mol_view_root] {\n\t\theight: auto;\n\t}\n}\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: repeating-linear-gradient(\n\t\t-45deg,\n\t\t#f92323,\n\t\t#f92323 .5rem,\n\t\t#ff3d3d .5rem,\n\t\t#ff3d3d 1.5rem\n\t);\n\tcolor: black;\n\talign-items: center;\n\tjustify-content: center;\n}\n\n@keyframes mol_view_wait {\n\tfrom {\n\t\topacity: .25;\n\t}\n\t20% {\n\t\topacity: .75;\n\t}\n\tto {\n\t\topacity: .25;\n\t}\n}\n\n:where([mol_view][mol_view_error=\"$mol_promise_blocker\"]),\n:where([mol_view][mol_view_error=\"Promise\"]) {\n\tbackground: var(--mol_theme_hover);\n}\n\n[mol_view][mol_view_error=\"Promise\"] {\n\tanimation: mol_view_wait 1s steps(20,end) infinite;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -24038,28 +24038,6 @@ var $;
 "use strict";
 
 ;
-	($.$mol_icon_sprout) = class $mol_icon_sprout extends ($.$mol_icon) {
-		path(){
-			return "M2,22V20C2,20 7,18 12,18C17,18 22,20 22,20V22H2M11.3,9.1C10.1,5.2 4,6.1 4,6.1C4,6.1 4.2,13.9 9.9,12.7C9.5,9.8 8,9 8,9C10.8,9 11,12.4 11,12.4V17C11.3,17 11.7,17 12,17C12.3,17 12.7,17 13,17V12.8C13,12.8 13,8.9 16,7.9C16,7.9 14,10.9 14,12.9C21,13.6 21,4 21,4C21,4 12.1,3 11.3,9.1Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_sprout_outline) = class $mol_icon_sprout_outline extends ($.$mol_icon) {
-		path(){
-			return "M23,4.1V2.3L21.2,2.1C21.1,2.1 20.5,2 19.5,2C15.4,2 12.4,3.2 10.7,5.3C9.4,4.5 7.6,4 5.5,4C4.5,4 3.8,4.1 3.8,4.1L1.9,4.4L2,6.1C2.1,9.1 3.6,14.8 8.8,14.8C8.9,14.8 8.9,14.8 9,14.8V18.2C5.2,18.7 2,20 2,20V22H22V20C22,20 18.8,18.7 15,18.2V15C21.3,14.9 23,7.8 23,4.1M12,18C11.7,18 11.3,18 11,18V12.4C11,12.4 10.8,9 8,9C8,9 9.5,9.8 9.9,12.7C9.5,12.8 9.1,12.8 8.8,12.8C4.2,12.8 4,6.1 4,6.1C4,6.1 4.6,6 5.5,6C7.4,6 10.5,6.4 11.4,9.1C11.9,4.6 17,4 19.5,4C20.4,4 21,4.1 21,4.1C21,4.1 21,13.1 14.7,13.1C14.5,13.1 14.2,13.1 14,13.1C14,11.1 16,8.1 16,8.1C13,9.1 13,13 13,13V18C12.7,18 12.3,18 12,18Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
 	($.$giper_baza_land_grab) = class $giper_baza_land_grab extends ($.$mol_select) {
 		Trigger_icon(){
 			const obj = new this.$.$mol_icon_plus();
@@ -24556,21 +24534,6 @@ var $;
 			(obj.bubble_content) = () => (["Double to wipe database"]);
 			return obj;
 		}
-		seed_make(next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Seed_make_icon(){
-			const obj = new this.$.$mol_icon_sprout_outline();
-			return obj;
-		}
-		Seed_make(){
-			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => ("Make Seed");
-			(obj.click) = (next) => ((this.seed_make(next)));
-			(obj.sub) = () => ([(this.Seed_make_icon())]);
-			return obj;
-		}
 		land_add(next){
 			if(next !== undefined) return next;
 			return null;
@@ -24630,7 +24593,7 @@ var $;
 			return obj;
 		}
 		menu_title(){
-			return "🌐 Glob";
+			return "🌐 Global Explorer";
 		}
 		menu_tools(){
 			return [(this.Home_link())];
@@ -24647,7 +24610,6 @@ var $;
 		menu_foot(){
 			return [
 				(this.Wipe_pick()), 
-				(this.Seed_make()), 
 				(this.Land_add()), 
 				(this.Update()), 
 				(this.Dump())
@@ -24673,9 +24635,6 @@ var $;
 	($mol_mem(($.$giper_baza_glob_book.prototype), "wipe"));
 	($mol_mem(($.$giper_baza_glob_book.prototype), "Wipe_icon"));
 	($mol_mem(($.$giper_baza_glob_book.prototype), "Wipe_pick"));
-	($mol_mem(($.$giper_baza_glob_book.prototype), "seed_make"));
-	($mol_mem(($.$giper_baza_glob_book.prototype), "Seed_make_icon"));
-	($mol_mem(($.$giper_baza_glob_book.prototype), "Seed_make"));
 	($mol_mem(($.$giper_baza_glob_book.prototype), "land_add"));
 	($mol_mem(($.$giper_baza_glob_book.prototype), "Land_add"));
 	($mol_mem(($.$giper_baza_glob_book.prototype), "update"));
@@ -24820,12 +24779,6 @@ var $;
                 mine.kill();
                 location.reload();
             }
-            seed_make() {
-                const seed = this.$.$giper_baza_flex_init();
-                this.$.$mol_state_arg.go({
-                    [this.param()]: seed.link().str
-                });
-            }
             lands_checked() {
                 const lands_touched = [...this.$.$giper_baza_glob.lands_touched.values()];
                 const lands_checked = lands_touched.filter(land => this.land_checked(land));
@@ -24880,7 +24833,7 @@ var $;
         $mol_style_define($giper_baza_glob_book, {
             Menu: {
                 flex: {
-                    basis: `20rem`,
+                    basis: `25rem`,
                 },
             },
             Menu_link: {
@@ -27562,7 +27515,7 @@ var $;
 			return obj;
 		}
 		title(){
-			return "📊 Stat";
+			return "📊 Server Statistics";
 		}
 		head(){
 			return [(this.Main()), (this.Tools())];
@@ -27837,7 +27790,7 @@ var $;
 			return obj;
 		}
 		title(){
-			return "🎰 Grab";
+			return "🎰 Beautiful Keys Mining";
 		}
 		glob(){
 			const obj = new this.$.$giper_baza_glob();
@@ -27945,7 +27898,7 @@ var $;
     (function ($$) {
         $mol_style_define($giper_baza_auth_slot, {
             flex: {
-                basis: '15rem',
+                basis: '25rem',
             },
             Key: {
                 font: {
@@ -27965,6 +27918,12 @@ var $;
 		}
 		Status(){
 			const obj = new this.$.$giper_baza_status();
+			return obj;
+		}
+		Info(){
+			const obj = new this.$.$mol_frame();
+			(obj.title) = () => ("💨 Giper Encyclopedy");
+			(obj.uri) = () => ("https://page.hyoo.ru/#!=sy2u0y_9rb8zj");
 			return obj;
 		}
 		Glob(){
@@ -27993,6 +27952,7 @@ var $;
 		}
 		spreads(){
 			return {
+				"info": (this.Info()), 
 				"glob": (this.Glob()), 
 				"stat": (this.Stat()), 
 				"slot": (this.Slot())
@@ -28004,6 +27964,7 @@ var $;
 	};
 	($mol_mem(($.$giper_baza_app.prototype), "Source"));
 	($mol_mem(($.$giper_baza_app.prototype), "Status"));
+	($mol_mem(($.$giper_baza_app.prototype), "Info"));
 	($mol_mem(($.$giper_baza_app.prototype), "Glob"));
 	($mol_mem(($.$giper_baza_app.prototype), "Stat"));
 	($mol_mem(($.$giper_baza_app.prototype), "Slot"));
@@ -28045,7 +28006,13 @@ var $;
             },
             Menu: {
                 flex: {
-                    basis: `10rem`,
+                    basis: `15rem`,
+                },
+            },
+            Info: {
+                flex: {
+                    basis: `50rem`,
+                    shrink: 0,
                 },
             },
         });
