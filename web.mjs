@@ -1940,7 +1940,7 @@ var $;
         handler = handler2;
         error = undefined;
         result = undefined;
-        window.dispatchEvent(new Event('$mol_try'));
+        self.dispatchEvent(new Event('$mol_try'));
         const error2 = error;
         const result2 = result;
         error = undefined;
@@ -5408,9 +5408,7 @@ var $;
 var $;
 (function ($) {
     class $mol_file_web extends $mol_file_webdav {
-        static base = $mol_dom_context.document?.currentScript
-            ? new URL('.', $mol_dom_context.document.currentScript['src']).toString()
-            : '';
+        static base = new URL('.', ($mol_dom_context.document?.currentScript)['src'] ?? globalThis.location.href).toString();
         version() { return '1'; }
         info() {
             try {
@@ -19857,6 +19855,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -19924,9 +19925,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-"use strict";
-
-;
 	($.$mol_icon_account) = class $mol_icon_account extends ($.$mol_icon) {
 		path(){
 			return "M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
@@ -19966,6 +19964,9 @@ var $;
 	};
 	($mol_mem(($.$giper_baza_link_chip.prototype), "link"));
 
+
+;
+"use strict";
 
 ;
 "use strict";
@@ -20020,9 +20021,6 @@ var $;
         $$.$giper_baza_link_chip = $giper_baza_link_chip;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -20414,6 +20412,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -20435,9 +20436,6 @@ var $;
         $$.$giper_baza_unit_sand_dump = $giper_baza_unit_sand_dump;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -22615,6 +22613,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -22804,9 +22805,6 @@ var $;
         $$.$giper_baza_flex_field = $giper_baza_flex_field;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -23250,6 +23248,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -23288,9 +23289,6 @@ var $;
         $$.$giper_baza_flex_form = $giper_baza_flex_form;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 	($.$giper_baza_pawn_dump) = class $giper_baza_pawn_dump extends ($.$mol_expander) {
@@ -23492,6 +23490,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -23572,9 +23573,6 @@ var $;
         $$.$giper_baza_pawn_dump = $giper_baza_pawn_dump;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -23974,6 +23972,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -24035,9 +24036,6 @@ var $;
         $$.$giper_baza_land_page = $giper_baza_land_page;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -24115,6 +24113,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -24135,9 +24136,6 @@ var $;
         $$.$giper_baza_land_grab = $giper_baza_land_grab;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 	($.$mol_icon_upload) = class $mol_icon_upload extends ($.$mol_icon) {
@@ -24411,6 +24409,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -24492,9 +24493,6 @@ var $;
         $$.$giper_baza_land_rights = $giper_baza_land_rights;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -24766,6 +24764,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -24893,9 +24894,6 @@ var $;
         $$.$giper_baza_glob_book = $giper_baza_glob_book;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -27638,6 +27636,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -27754,9 +27755,6 @@ var $;
         $$.$giper_baza_app_stat_page = $giper_baza_app_stat_page;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -27892,6 +27890,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -27959,9 +27960,6 @@ var $;
         $$.$giper_baza_auth_slot = $giper_baza_auth_slot;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
@@ -28045,6 +28043,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -28061,9 +28062,6 @@ var $;
         $$.$giper_baza_app = $giper_baza_app;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 "use strict";
