@@ -199,6 +199,7 @@
     "$mol_check_icon",
     "$mol_check",
     "$mol_dom_event",
+    "$mol_dom_transfer",
     "$mol_icon_brightness_4",
     "$mol_icon_brightness",
     "$mynamespace_myapp_button",
